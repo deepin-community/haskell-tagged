@@ -1,5 +1,5 @@
 name:           tagged
-version:        0.8.6
+version:        0.8.6.1
 license:        BSD3
 license-file:   LICENSE
 author:         Edward A. Kmett
@@ -13,7 +13,7 @@ copyright:      2009-2015 Edward A. Kmett
 description:    Haskell 98 phantom types to avoid unsafely passing dummy arguments.
 build-type:     Simple
 cabal-version:  >= 1.10
-extra-source-files: .travis.yml CHANGELOG.markdown README.markdown HLint.hs
+extra-source-files: .hlint.yaml CHANGELOG.markdown README.markdown
 tested-with:   GHC == 7.0.4
              , GHC == 7.2.2
              , GHC == 7.4.2
@@ -22,8 +22,10 @@ tested-with:   GHC == 7.0.4
              , GHC == 7.10.3
              , GHC == 8.0.2
              , GHC == 8.2.2
-             , GHC == 8.4.3
-             , GHC == 8.6.1
+             , GHC == 8.4.4
+             , GHC == 8.6.5
+             , GHC == 8.8.3
+             , GHC == 8.10.1
 
 source-repository head
   type: git
@@ -53,6 +55,11 @@ library
   hs-source-dirs: src
   exposed-modules: Data.Tagged
 
+  if impl(ghc >= 9.0)
+    -- these flags may abort compilation with GHC-8.10
+    -- https://gitlab.haskell.org/ghc/ghc/-/merge_requests/3295
+    ghc-options: -Winferred-safe-imports -Wmissing-safe-haskell-mode
+
   if !impl(hugs)
     cpp-options: -DLANGUAGE_DeriveDataTypeable
     other-extensions: DeriveDataTypeable
@@ -67,7 +74,7 @@ library
 
   if impl(ghc>=7.6)
     exposed-modules: Data.Proxy.TH
-    build-depends: template-haskell >= 2.8 && < 2.15
+    build-depends: template-haskell >= 2.8 && < 2.18
 
   if flag(deepseq)
     build-depends: deepseq >= 1.1 && < 1.5

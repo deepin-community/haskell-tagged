@@ -1,8 +1,8 @@
-haskell-tagged (0.8.6-deepin1) unstable; urgency=medium
+haskell-tagged (0.8.6.1-1) unstable; urgency=medium
 
-  * Rebuild
+  * New upstream version.
 
- -- Deepin Packages Builder <packages@deepin.org>  Mon, 14 Nov 2022 17:41:20 +0800
+ -- Clint Adams <clint@debian.org>  Tue, 14 Jun 2022 14:54:31 -0400
 
 haskell-tagged (0.8.6-3) unstable; urgency=medium
 
