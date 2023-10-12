@@ -1,3 +1,7 @@
+0.8.6.1 [2020.12.28]
+--------------------
+* Mark all modules as explicitly Safe or Trustworthy.
+
 0.8.6 [2018.07.02]
 ------------------
 * Make the `Read(1)` instances for `Proxy` ignore the precedence argument,
